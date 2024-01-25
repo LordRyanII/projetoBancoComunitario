@@ -1,0 +1,23 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var express_1 = require("express");
+var loginController_1 = require("../controllers/loginController");
+var loginValidationRotes_1 = require("../middleware/loginValidationRotes");
+var registerValidationRotes_1 = require("../middleware/registerValidationRotes");
+var tokenUsers_1 = require("../middleware/tokenUsers");
+var dataController_1 = require("../controllers/dataController");
+var cors = require('cors');
+var router = (0, express_1.Router)();
+router.use(function (req, res, next) {
+    res.header("Access-Control-Allow-Origin", "http://localhost:5173");
+    res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE");
+    res.header("Access-Control-Allow-Headers", "Content-Type");
+    next();
+});
+router.use(cors());
+router.use((0, express_1.json)());
+router.use((0, express_1.urlencoded)({ extended: true }));
+router.post("/loginUsers", loginValidationRotes_1.validationRoteLogin, loginController_1.loginUser);
+router.post("/cadastroUser", registerValidationRotes_1.registerValidation, loginController_1.cadastrarUsuario);
+router.get("/data/user", tokenUsers_1.authenticateToken, dataController_1.returnUserData);
+exports.default = router;
