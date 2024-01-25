@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+      "target": "ES5",
+      "lib": ["ES2015", "DOM", "ESNext"],
+      /* Modules */
+      "module": "commonjs",
+      "outDir": "dist/", //Pasta aonde o typescript guardará os arquivos compilados
+      "esModuleInterop": true,
+      "forceConsistentCasingInFileNames": true,
+      /* Type Checking */
+      "strict": true,
+      /* Completeness */
+      /*included with TypeScript. */
+      "skipLibCheck": true /* Skip type checking all .d.ts files. */
+  },
+  "include": [
+      "server/" //Nome da sua pasta raíz, ou seja aonde ficará o seu código
+  ]
+
+}
