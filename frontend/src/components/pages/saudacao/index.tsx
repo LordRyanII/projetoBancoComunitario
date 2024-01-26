@@ -14,8 +14,8 @@ const InterfaceSaudacao = () => {
                         <Nav.Link href="#pricing">Eventos</Nav.Link>
                     </Nav>
                     <div className="login-buttons">
-                        <Button variant="outline-info" className="mr-2">Login</Button>
-                        <Button variant="outline-success">Cadastro</Button>
+                        <Button variant="outline-info" className="mr-2"><a href="/login"></a>Login</Button>
+                        <Button variant="outline-success"><a href="form/cadastrouser"></a>Cadastro</Button>
                     </div>
                 </Navbar.Collapse>
             </Navbar>
