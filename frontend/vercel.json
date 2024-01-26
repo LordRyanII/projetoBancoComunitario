@@ -1,14 +1,8 @@
 {
     "version": 2,
-    "rewrites": [
-      {
-        "source": "/(.*)",
-        "destination": "/"
-      }
-    ],
     "builds": [
       {
-        "src": "src/main.tsx",
+        "src": "package.json",
         "use": "@vercel/static-build",
         "config": { "zeroConfig": true }
       }
