@@ -10,7 +10,7 @@ var connectionDatabase_1 = __importDefault(require("./database/models/connection
 dotenv_1.default.config();
 var app = (0, express_1.default)();
 var databaseConnection = new connectionDatabase_1.default();
-var port = 3001;
+var port = process.env.PORT;
 app.use(express_1.default.urlencoded({ extended: true }));
 app.use(userRoutes_1.default);
 app.listen(port, function () {

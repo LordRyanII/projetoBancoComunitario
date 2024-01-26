@@ -1,7 +1,7 @@
 import axios, { AxiosRequestConfig, AxiosResponseHeaders } from "axios";
 import { HttpStatusCode } from "axios";
 
-const urlBase: string = "http://localhost:3001/loginUsers";
+const urlBase: string = "https://api-bancocomunitario.onrender.com/loginUsers";
 
 interface AxiosRequestData<T = any, D = any> {
   data: T;

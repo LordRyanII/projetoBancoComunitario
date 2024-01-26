@@ -8,7 +8,7 @@ const getDados = async () => {
   }
 
   try {
-    const response = await axios.get('http://localhost:3001/data/user', {
+    const response = await axios.get('https://api-bancocomunitario.onrender.com/data/user', {
       headers: {
         Authorization: `Bearer ${token}`,
       },

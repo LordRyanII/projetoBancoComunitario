@@ -1,6 +1,6 @@
 import axios, { AxiosResponse } from "axios";
 
-const urlBase = "http://localhost:3001/cadastroUser";
+const urlBase = "https://api-bancocomunitario.onrender.com/cadastroUser";
 
 interface Endereco {
   cep: string;
