@@ -1,6 +1,7 @@
 import { Navbar, Nav, Button, Card } from 'react-bootstrap';
+import { NavLink } from 'react-router-dom';
 import './styles.css';
-import imgNatal from './img/postagem.jpg'
+import imgNatal from './img/postagem.jpg';
 
 const InterfaceSaudacao = () => {
     return (
@@ -14,26 +15,29 @@ const InterfaceSaudacao = () => {
                         <Nav.Link href="#pricing">Eventos</Nav.Link>
                     </Nav>
                     <div className="login-buttons">
-                        <Button variant="outline-info" className="mr-2"><a href="/login"></a>Login</Button>
-                        <Button variant="outline-success"><a href="form/cadastrouser"></a>Cadastro</Button>
+                        <Button variant="outline-info" className="mr-2">
+                            <NavLink to="/login" style={{ textDecoration: 'none', color: 'inherit' }}>Login</NavLink>
+                        </Button>
+                        <Button variant="outline-success">
+                            <NavLink to="/form/cadastrouser" style={{ textDecoration: 'none', color: 'inherit' }}>Cadastro</NavLink>
+                        </Button>
                     </div>
                 </Navbar.Collapse>
             </Navbar>
 
             <Card bg="light" text="dark" className="text-center">
                 <Card.Body>
-                    <Card.Title>Bem-vindo a nossa timeline!</Card.Title>
+                    <Card.Title>Bem-vindo à nossa timeline!</Card.Title>
                     <Card.Text>
-                        Aqui é onde nós compartilhamos as últimas notícias e atualizações. Faça login ou cadastre-se e faça parte do nosso banco comunitário, ajude a comunidade!
+                        Aqui é onde compartilhamos as últimas notícias e atualizações. Faça login ou cadastre-se e faça parte do nosso banco comunitário, ajude a comunidade!
                     </Card.Text>
                 </Card.Body>
-
             </Card>
 
             <Card>
                 <Card.Img variant="top" src={imgNatal} alt="Imagem da Comunidade" />
                 <Card.Text>
-                    Contemple essa bela arte feita pela minha namorada:)
+                    Contemple essa bela arte feita pela minha namorada :)
                 </Card.Text>
             </Card>
         </>
