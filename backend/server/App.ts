@@ -5,7 +5,7 @@ import Database from "./database/models/connectionDatabase";
 dotenv.config();
 const app: any = express();
 const databaseConnection = new Database();
-const port:number = 3001;
+const port = process.env.PORT as string;
 
 app.use(express.urlencoded({ extended: true }));
 app.use(router);
