@@ -1,4 +1,4 @@
-import ContentCard from '../../layouts/card/card';
+import ContentCard from '../../layouts/card/homeCard/card';
 
 const Home = () => {
     return (

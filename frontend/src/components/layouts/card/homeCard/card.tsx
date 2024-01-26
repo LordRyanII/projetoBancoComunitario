@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Container, Row, Col, Card, CardText, CardTitle } from 'reactstrap';
 import { FaMoneyBillWave, FaRegCalendarAlt, FaPhoneAlt, FaChartLine, FaArrowUp,FaArrowDown   } from 'react-icons/fa';
-import Header from '../../layouts/header';
-import getDados from '../../../services/Api/getDados';
+import Header from '../../header';
+import getDados from '../../../../services/Api/getDados';
 import './index.css'
 
 
