@@ -10,7 +10,7 @@ const ContentCard: React.FC = () => {
     const [loading, setLoading] = useState(true);
     const [userData, setUserData] = useState<any | null>(null);
     const [isHistoryOpen, setIsHistoryOpen] = useState(false);
-    const [selectedHistoryItem, setSelectedHistoryItem] = useState<any | null>(null);
+    const [, setSelectedHistoryItem] = useState<any | null>(null);
     const [isCalendarioOpen, setIsCalendarioOpen] = useState(false);
     const [isAjudaOpen, setIsAjudaOpen] = useState(false);
 
