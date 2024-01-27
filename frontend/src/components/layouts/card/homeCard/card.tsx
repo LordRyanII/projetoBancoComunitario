@@ -1,24 +1,24 @@
 import React, { useEffect, useState } from 'react';
-import { Container, Row, Col, Card, CardText, CardTitle } from 'reactstrap';
-import { FaMoneyBillWave, FaRegCalendarAlt, FaPhoneAlt, FaChartLine, FaArrowUp,FaArrowDown   } from 'react-icons/fa';
+import { Container, Row, Col, Card, CardTitle } from 'reactstrap';
+import { FaRegCalendarAlt, FaPhoneAlt, FaChartLine, FaArrowUp, FaArrowDown } from 'react-icons/fa';
 import Header from '../../header';
 import getDados from '../../../../services/Api/getDados';
-import './index.css'
-
-
+import QuadradosComponente from './cardAcessoRapido';
+import './index.css';
 
 const ContentCard: React.FC = () => {
     const [loading, setLoading] = useState(true);
     const [userData, setUserData] = useState<any | null>(null);
     const [isHistoryOpen, setIsHistoryOpen] = useState(false);
+    const [selectedHistoryItem, setSelectedHistoryItem] = useState<any | null>(null);
+    const [isCalendarioOpen, setIsCalendarioOpen] = useState(false);
+    const [isAjudaOpen, setIsAjudaOpen] = useState(false);
 
     useEffect(() => {
         const fetchUserData = async () => {
             try {
-                // Chame a função getDados para obter dados reais do usuário
                 const userDataFromApi = await getDados();
-
-                setUserData(userDataFromApi.data); // Ajuste conforme a estrutura dos dados reais
+                setUserData(userDataFromApi.data);
             } catch (error) {
                 console.error('Erro ao obter dados do usuário:', error);
             } finally {
@@ -31,6 +31,27 @@ const ContentCard: React.FC = () => {
 
     const toggleHistory = () => {
         setIsHistoryOpen(!isHistoryOpen);
+        setSelectedHistoryItem(null);
+        setIsCalendarioOpen(false);
+        setIsAjudaOpen(false);
+    };
+
+    const openHistoryItem = (historicoItem: any) => {
+        setSelectedHistoryItem(historicoItem);
+        setIsCalendarioOpen(false);
+        setIsAjudaOpen(false);
+    };
+
+    const toggleCalendario = () => {
+        setIsCalendarioOpen(!isCalendarioOpen);
+        setIsHistoryOpen(false);
+        setIsAjudaOpen(false);
+    };
+
+    const toggleAjuda = () => {
+        setIsAjudaOpen(!isAjudaOpen);
+        setIsHistoryOpen(false);
+        setIsCalendarioOpen(false);
     };
 
     if (loading) {
@@ -42,16 +63,6 @@ const ContentCard: React.FC = () => {
             <Header userName={userData?.nome || 'Usuário'} />
             <Row className="justify-content-center">
                 <Col md={3} className="mb-3">
-                    <Card body className="text-white bg-success">
-                        <CardTitle tag="h5">
-                            <FaMoneyBillWave /> Conta
-                        </CardTitle>
-                        <CardText>
-                            Saldo em antenas: A${userData?.historico.length > 0 ? userData.historico[0].valor : 'N/A'}
-                        </CardText>
-                    </Card>
-                </Col>
-                <Col md={3} className="mb-3">
                     <Card
                         body
                         className={`text-white bg-success ${isHistoryOpen ? 'open' : ''}`}
@@ -62,9 +73,9 @@ const ContentCard: React.FC = () => {
                         </CardTitle>
                         {isHistoryOpen ? (
                             userData?.historico.map((historicoItem: any) => (
-                                <div key={historicoItem._id}>
+                                <div key={historicoItem._id} onClick={() => openHistoryItem(historicoItem)}>
                                     <p>Data: {historicoItem.dataHistorico}</p>
-                                    <p>Descrição: {historicoItem.descricao} {historicoItem.descricao === 'Entrada' ? <FaArrowUp/> : <FaArrowDown/>}</p>
+                                    <p>Descrição: {historicoItem.descricao} {historicoItem.descricao === 'Entrada' ? <FaArrowUp /> : <FaArrowDown />}</p>
                                     <p>Valor: {historicoItem.valor}</p>
                                     <hr />
                                 </div>
@@ -75,22 +86,43 @@ const ContentCard: React.FC = () => {
                     </Card>
                 </Col>
                 <Col md={3} className="mb-3">
-                    <Card body className="text-white bg-success">
+                    <Card
+                        body
+                        className={`text-white bg-success ${isCalendarioOpen ? 'open' : ''}`}
+                        onClick={toggleCalendario}
+                    >
                         <CardTitle tag="h5">
-                            <FaRegCalendarAlt /> Acesso ao calendário de trocas
+                            <FaRegCalendarAlt /> Calendário de Trocas
                         </CardTitle>
-                        <CardText>{userData?.calendario}</CardText>
+                        {isCalendarioOpen && (
+                            <div>
+                                <p>Por enquanto não há datas disponíveis, volte mais tarde!</p>
+                            </div>
+                        )}
                     </Card>
                 </Col>
                 <Col md={3} className="mb-3">
-                    <Card body className="text-white bg-success">
+                    <Card
+                        body
+                        className={`text-white bg-success ${isAjudaOpen ? 'open' : ''}`}
+                        onClick={toggleAjuda}
+                    >
                         <CardTitle tag="h5">
                             <FaPhoneAlt /> Ajuda
                         </CardTitle>
-                        <CardText>{userData?.ajuda}</CardText>
+                        {isAjudaOpen && (
+                            <div>
+                                <br />
+                                <h6>Policia, ligue: 190</h6>
+                                <h6>Samu, ligue: 192</h6>
+                                <h6>Bombeiros, ligue: 193</h6>
+                            </div>
+                        )}
                     </Card>
                 </Col>
+                <QuadradosComponente />
             </Row>
+
         </Container>
     );
 }
