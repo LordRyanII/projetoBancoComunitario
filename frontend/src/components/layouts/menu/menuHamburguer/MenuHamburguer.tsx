@@ -5,6 +5,7 @@ import { FaRegUserCircle, FaCog, FaDatabase, FaNewspaper } from "react-icons/fa"
 import { NavLink } from 'react-router-dom';
 import './index.css';
 
+
 const MenuHamburguer = () => {
     const [show, setShow] = useState(false);
 
@@ -33,7 +34,7 @@ const MenuHamburguer = () => {
                 <Offcanvas.Body id='tagButton'>
                     <div className="button-area">
                         <div className="content" style={{ color: 'white' }}>
-                            <NavLink to='/home' style={{ textDecoration: 'none', color: 'inherit' }}>
+                            <NavLink to='/timeline' style={{ textDecoration: 'none', color: 'inherit' }}>
                                 <FaNewspaper /> Timeline
                             </NavLink>
                         </div>

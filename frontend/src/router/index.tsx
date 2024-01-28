@@ -1,5 +1,5 @@
 import { Routes, Route } from 'react-router-dom';
-//import InterfaceSaudacao from '../components/pages/saudacao';
+import InterfaceSaudacao from '../components/pages/saudacao';
 import Login from '../components/pages/login/Login';
 import Home from '../components/pages/home';
 import ProtectedRoute from './protectedRoutes';
@@ -9,7 +9,6 @@ import RegisterSection from '../components/pages/register/Register';
 export function AppRoutes() {
   return (
     <Routes>
-      {/* <Route path='/' element={<InterfaceSaudacao />} /> */}
       <Route path='/' element={<Login />} />
       <Route path="/login" element={<Login />} />
       <Route
@@ -18,6 +17,7 @@ export function AppRoutes() {
       />
       <Route path="*" element={<NotFoundPage/>}/>
       <Route path="/form/cadastrouser" element={<RegisterSection/>}/>
+      <Route path='/timeline' element={<InterfaceSaudacao />} />
     </Routes>
   );
 }
