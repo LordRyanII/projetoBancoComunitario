@@ -1,8 +1,12 @@
 import ContentCard from '../../layouts/card/homeCard/card';
+import MenuHamburguer from '../../layouts/menu/menuHamburguer/MenuHamburguer';
 
 const Home = () => {
     return (
-        <ContentCard/>
+        <>
+            <MenuHamburguer />
+            <ContentCard />
+        </>
     );
 }
 

@@ -1,0 +1,14 @@
+.button-area{
+    width: 100%;
+    padding: 10px;
+    border-radius: 20px;
+}
+
+.button-area:hover{
+    background-color: rgb(2, 83, 2);
+    color: white
+};
+.buttonMenu > button{
+    display: inline-block;
+    padding: 50px;
+}

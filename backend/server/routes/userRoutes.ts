@@ -6,23 +6,23 @@ import { authenticateToken } from "../middleware/tokenUsers";
 import { returnUserData } from "../controllers/dataController";
 const cors = require('cors');
 
-const router = Router();
+const useRouter = Router();
 
-router.use((req: Request, res: Response, next: NextFunction) => {
+useRouter.use((req: Request, res: Response, next: NextFunction) => {
   res.header("Access-Control-Allow-Origin", "http://localhost:5173");
   res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE");
   res.header("Access-Control-Allow-Headers", "Content-Type");
   next();
 });
 
-router.use(cors());
+useRouter.use(cors());
 
-router.use(json());
-router.use(urlencoded({ extended: true }));
+useRouter.use(json());
+useRouter.use(urlencoded({ extended: true }));
 
-router.post("/loginUsers", validationRoteLogin, loginUser);
-router.post("/cadastroUser", registerValidation, cadastrarUsuario);
+useRouter.post("/loginUsers", validationRoteLogin, loginUser);
+useRouter.post("/cadastroUser", registerValidation, cadastrarUsuario);
 
-router.get("/data/user", authenticateToken, returnUserData);
+useRouter.get("/data/user", authenticateToken, returnUserData);
 
-export default router;
+export default useRouter;
